@@ -1,0 +1,13 @@
+.menuHeader {
+  width: 95dvw;
+  min-height: 52px;
+  max-height: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}

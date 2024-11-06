@@ -1,7 +1,12 @@
 import "./App.css";
+import { Header } from "./containers/Header/Header.jsx";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;

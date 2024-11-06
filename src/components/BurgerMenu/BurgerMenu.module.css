@@ -1,0 +1,23 @@
+svg {
+  height: 48px;
+  width: 48px;
+  fill: var(--black);
+}
+
+.menuHeader {
+  font-size: 1.2em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 10px 0px;
+}
+
+.menuTitles {
+  font-size: 1.2em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
