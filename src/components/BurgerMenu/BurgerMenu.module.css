@@ -1,0 +1,39 @@
+.burgerMenu {
+  position: relative;
+}
+
+.burgerMenuBtn {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.burgerMenuOpened {
+  background-color: var(--black);
+  color: var(--white);
+  position: fixed;
+  left: 2dvw;
+  top: 9%;
+  width: 96dvw;
+
+  ul {
+    list-style: none;
+    font-family: var(--font-main);
+    font-size: 1.3em;
+
+    li {
+      padding-bottom: 10px;
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+    }
+  }
+}
+
+button {
+  background-color: var(--black);
+  border: none;
+  color: var(--white);
+  font-size: 2em;
+}
