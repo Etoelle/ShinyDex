@@ -1,0 +1,67 @@
+.newShasseBtn {
+  background-color: var(--pink);
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 2.1em;
+  padding: 5px;
+  width: 100%;
+  border-radius: 0.3em;
+  position: relative;
+}
+
+.newShasseForm {
+  background-color: var(--plight);
+  position: fixed;
+  width: 91dvw;
+  height: 300px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 0.3em;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-bis);
+}
+
+.inputName {
+  height: 2em;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 3em;
+  resize: none;
+}
+
+.spritesContainer {
+  width: 100%;
+  height: 11em;
+}
+
+.sprites {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sprite {
+  width: 10em;
+  height: auto;
+}
+
+.btnsNewShasse {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnNewShasseClose {
+  background-color: var(--blue);
+  width: 20%;
+  font-size: 1em;
+  border-radius: 0.6em;
+}
+
+.btnNewShasseSubmit {
+  background-color: var(--pink);
+  border-radius: 0.3em;
+  width: 78%;
+}

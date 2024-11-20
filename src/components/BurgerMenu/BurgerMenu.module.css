@@ -1,19 +1,19 @@
-.burgerMenu {
-  position: relative;
-}
-
 .burgerMenuBtn {
+  position: relative;
   width: 1.6em;
   height: 1.6em;
+  border-radius: 0.2em;
 }
 
 .burgerMenuOpened {
+  border-radius: 0.3em;
   background-color: var(--black);
   color: var(--white);
   position: fixed;
   left: 2dvw;
   top: 9%;
   width: 96dvw;
+  z-index: 2;
 
   ul {
     list-style: none;

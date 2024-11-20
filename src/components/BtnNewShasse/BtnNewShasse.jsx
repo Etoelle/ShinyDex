@@ -35,6 +35,12 @@ const BtnNewShasse = () => {
     }
   };
 
+  const closeForm = () => {
+    setNewShasseIsOpen(false);
+    setSelectedPokemon(null);
+    setComment("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Pokémon enregistré", { selectedPokemon, comment });
@@ -42,9 +48,11 @@ const BtnNewShasse = () => {
 
   return (
     <>
-      <button onClick={toggleNewShasseForm}>Nouvelle Shasse</button>
+      <button onClick={toggleNewShasseForm} className={style.newShasseBtn}>
+        Nouvelle Shasse
+      </button>
       {newShasseIsOpen && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style.newShasseForm}>
           <Select
             options={pokemonOptions}
             onChange={handleSelectChange}
@@ -56,19 +64,30 @@ const BtnNewShasse = () => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          {selectedPokemon && (
-            <div>
-              <img
-                src={selectedPokemon.sprites.front_default}
-                alt={selectedPokemon.name}
-              />
-              <img
-                src={selectedPokemon.sprites.front_shiny}
-                alt={`${selectedPokemon.name} shiny`}
-              />
-            </div>
-          )}
-          <button type="submit">Shasser</button>
+          <div className={style.spritesContainer}>
+            {selectedPokemon && (
+              <div className={style.sprites}>
+                <img
+                  src={selectedPokemon.sprites.front_shiny}
+                  alt={selectedPokemon.name}
+                  className={style.sprite}
+                />
+                <img
+                  src={selectedPokemon.sprites.back_shiny}
+                  alt={`${selectedPokemon.name} shiny`}
+                  className={style.sprite}
+                />
+              </div>
+            )}
+          </div>
+          <div className={style.btnsNewShasse}>
+            <button onClick={closeForm} className={style.btnNewShasseClose}>
+              Annuler
+            </button>
+            <button type="submit" className={style.btnNewShasseSubmit}>
+              Shasser
+            </button>
+          </div>
         </form>
       )}
     </>
