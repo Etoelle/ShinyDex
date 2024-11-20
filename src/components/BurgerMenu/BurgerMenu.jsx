@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import style from "./BurgerMenu.module.css";
 
 const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
   const burgerMenuRef = useRef(null);
 
   const toggleBurgerMenu = () => {
-    setIsOpen(!isOpen);
+    setBurgerMenuIsOpen(!burgerMenuIsOpen);
   };
 
   const handleClickOutside = (event) => {
@@ -14,12 +14,12 @@ const BurgerMenu = () => {
       burgerMenuRef.current &&
       !burgerMenuRef.current.contains(event.target)
     ) {
-      setIsOpen(false);
+      setBurgerMenuIsOpen(false);
     }
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (burgerMenuIsOpen) {
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
@@ -27,14 +27,14 @@ const BurgerMenu = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [burgerMenuIsOpen]);
 
   return (
     <div className={style.burgerMenu} ref={burgerMenuRef}>
       <button className={style.burgerMenuBtn} onClick={toggleBurgerMenu}>
         ☰
       </button>
-      {isOpen && (
+      {burgerMenuIsOpen && (
         <nav className={style.burgerMenuOpened}>
           <ul>
             <li>Accueil</li>
