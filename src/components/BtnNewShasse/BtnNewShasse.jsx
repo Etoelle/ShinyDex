@@ -44,6 +44,15 @@ const BtnNewShasse = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Pokémon enregistré", { selectedPokemon, comment });
+
+    const storedPokemons = JSON.parse(localStorage.getItem("pokemons")) || [];
+    const newPokemon = { name: selectedPokemon, comment: comment, count: 0 };
+    const updatedPokemons = [...storedPokemons, newPokemon];
+    localStorage.setItem("pokemons", JSON.stringify(updatedPokemons));
+
+    setNewShasseIsOpen(false);
+    setSelectedPokemon(null);
+    setComment("");
   };
 
   return (
