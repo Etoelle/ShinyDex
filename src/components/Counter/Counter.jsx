@@ -67,9 +67,7 @@ const Counter = () => {
               alt={pokemon.name}
               className={style.pokemonCardSprite}
             />
-            <div className={style.pokemonCardTitle}>
-              <h2>{pokemon.name}</h2> <p>{pokemon.encounters}</p>
-            </div>
+            <p className={style.pokemonCardTitle}>{pokemon.encounters}</p>
             <p className={style.pokemonCardComment}>{pokemon.comment}</p>
             <div className={style.pokemonCardBtns}>
               <button

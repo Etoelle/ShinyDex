@@ -2,7 +2,7 @@
   background-color: var(--pink);
   color: var(--white);
   font-family: var(--font-main);
-  font-size: 2.1em;
+  font-size: 32px;
   padding: 5px;
   width: 100%;
   border-radius: 0.3em;
@@ -23,6 +23,7 @@
 }
 
 .inputName {
+  font-size: 20px;
   height: 2em;
   margin-bottom: 10px;
 }
