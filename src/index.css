@@ -11,3 +11,7 @@
   --font-main: "Jaro", sans-serif;
   --font-bis: "Lato", sans-serif;
 }
+
+body {
+  background-color: var(--white);
+}

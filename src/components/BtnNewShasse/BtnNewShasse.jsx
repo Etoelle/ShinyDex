@@ -50,6 +50,7 @@ const BtnNewShasse = () => {
       name: selectedPokemon.name,
       comment: comment,
       encounters: 0,
+      captured: false,
     };
     const updatedPokemons = [...storedPokemons, newPokemon];
     localStorage.setItem("pokemons", JSON.stringify(updatedPokemons));
@@ -57,6 +58,8 @@ const BtnNewShasse = () => {
     setNewShasseIsOpen(false);
     setSelectedPokemon(null);
     setComment("");
+
+    window.location.reload();
   };
 
   return (
