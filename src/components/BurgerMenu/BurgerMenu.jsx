@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./BurgerMenu.module.css";
+import { Link, useLocation } from "react-router-dom";
 
 const BurgerMenu = () => {
   const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
   const burgerMenuRef = useRef(null);
+  const location = useLocation();
 
   const toggleBurgerMenu = () => {
     setBurgerMenuIsOpen(!burgerMenuIsOpen);
@@ -29,6 +31,10 @@ const BurgerMenu = () => {
     };
   }, [burgerMenuIsOpen]);
 
+  useEffect(() => {
+    setBurgerMenuIsOpen(false);
+  }, [location]);
+
   return (
     <div className={style.burgerMenu} ref={burgerMenuRef}>
       <button className={style.burgerMenuBtn} onClick={toggleBurgerMenu}>
@@ -37,9 +43,13 @@ const BurgerMenu = () => {
       {burgerMenuIsOpen && (
         <nav className={style.burgerMenuOpened}>
           <ul>
-            <li>Accueil</li>
-            <li>Collection</li>
-            <li>Pokédex</li>
+            <li>
+              <Link to="/">Accueil</Link>
+            </li>
+            {/* <li>Collection</li> */}
+            <li>
+              <Link to="/pokedex">Pokédex</Link>
+            </li>
             <li>
               <a
                 href="https://www.pokebip.com/page/jeuxvideo/dossier_shasse/index"
@@ -49,7 +59,7 @@ const BurgerMenu = () => {
                 Guide Pokébip
               </a>
             </li>
-            <li>Contact</li>
+            {/* <li>Contact</li> */}
           </ul>
         </nav>
       )}
