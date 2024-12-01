@@ -33,25 +33,35 @@ const Counter = () => {
     localStorage.setItem("pokemons", JSON.stringify(updatedPokemons));
   };
 
-  const incrementEncounter = (index) => {
-    const updatedPokemons = [...pokemons];
-    updatedPokemons[index].encounters += 1;
+  const incrementEncounter = (id) => {
+    const updatedPokemons = pokemons.map((pokemon) => {
+      if (pokemon.id === id) {
+        return { ...pokemon, encounters: pokemon.encounters + 1 };
+      }
+      return pokemon;
+    });
     setPokemons(updatedPokemons);
     updateLocalStorage(updatedPokemons);
   };
 
-  const decrementEncounter = (index) => {
-    const updatedPokemons = [...pokemons];
-    if (updatedPokemons[index].encounters > 0) {
-      updatedPokemons[index].encounters -= 1;
-      setPokemons(updatedPokemons);
-      updateLocalStorage(updatedPokemons);
-    }
+  const decrementEncounter = (id) => {
+    const updatedPokemons = pokemons.map((pokemon) => {
+      if (pokemon.id === id && pokemon.encounters > 0) {
+        return { ...pokemon, encounters: pokemon.encounters - 1 };
+      }
+      return pokemon;
+    });
+    setPokemons(updatedPokemons);
+    updateLocalStorage(updatedPokemons);
   };
 
-  const capturePokemon = (index) => {
-    const updatedPokemons = [...pokemons];
-    updatedPokemons[index].captured = true;
+  const capturePokemon = (id) => {
+    const updatedPokemons = pokemons.map((pokemon) => {
+      if (pokemon.id === id) {
+        return { ...pokemon, captured: true };
+      }
+      return pokemon;
+    });
     setPokemons(updatedPokemons);
     updateLocalStorage(updatedPokemons);
   };
@@ -60,8 +70,8 @@ const Counter = () => {
     <div className={style.counterContainer}>
       {pokemons
         .filter((pokemon) => !pokemon.captured)
-        .map((pokemon, index) => (
-          <div key={index} className={style.pokemonCard}>
+        .map((pokemon) => (
+          <div key={pokemon.id} className={style.pokemonCard}>
             <img
               src={sprites[pokemon.name]}
               alt={pokemon.name}
@@ -71,20 +81,20 @@ const Counter = () => {
             <p className={style.pokemonCardComment}>{pokemon.comment}</p>
             <div className={style.pokemonCardBtns}>
               <button
-                onClick={() => decrementEncounter(index)}
+                onClick={() => decrementEncounter(pokemon.id)}
                 className={style.pokemonCardLess}
               >
                 -
               </button>
               <button
-                onClick={() => incrementEncounter(index)}
+                onClick={() => incrementEncounter(pokemon.id)}
                 className={style.pokemonCardMore}
               >
                 +
               </button>
             </div>
             <button
-              onClick={() => capturePokemon(index)}
+              onClick={() => capturePokemon(pokemon.id)}
               className={style.pokemonCardCaptured}
             >
               Capturé

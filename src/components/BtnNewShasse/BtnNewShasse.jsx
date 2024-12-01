@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
 import style from "./BtnNewShasse.module.css";
+import { nanoid } from "nanoid";
 
 const BtnNewShasse = () => {
   const [newShasseIsOpen, setNewShasseIsOpen] = useState(false);
@@ -45,13 +46,15 @@ const BtnNewShasse = () => {
     e.preventDefault();
     console.log("Pokémon enregistré", { selectedPokemon, comment });
 
-    const storedPokemons = JSON.parse(localStorage.getItem("pokemons")) || [];
     const newPokemon = {
+      id: nanoid(),
       name: selectedPokemon.name,
       comment: comment,
       encounters: 0,
       captured: false,
     };
+
+    const storedPokemons = JSON.parse(localStorage.getItem("pokemons")) || [];
     const updatedPokemons = [...storedPokemons, newPokemon];
     localStorage.setItem("pokemons", JSON.stringify(updatedPokemons));
 
