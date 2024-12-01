@@ -5,6 +5,7 @@ import axios from "axios";
 const Counter = () => {
   const [pokemons, setPokemons] = useState([]);
   const [sprites, setSprites] = useState({});
+  const [lastCapturedSprite, setLastCapturedSprite] = useState(null);
 
   useEffect(() => {
     const fetchSprites = async () => {
@@ -27,6 +28,10 @@ const Counter = () => {
       setSprites(spritesData);
     };
     fetchSprites();
+    const lastCaptured = localStorage.getItem("lastCapturedSprite");
+    if (lastCaptured) {
+      setLastCapturedSprite(lastCaptured);
+    }
   }, []);
 
   const updateLocalStorage = (updatedPokemons) => {
@@ -58,6 +63,9 @@ const Counter = () => {
   const capturePokemon = (id) => {
     const updatedPokemons = pokemons.map((pokemon) => {
       if (pokemon.id === id) {
+        const sprite = sprites[pokemon.name];
+        setLastCapturedSprite(sprite);
+        localStorage.setItem("lastCapturedSprite", sprite);
         return { ...pokemon, captured: true };
       }
       return pokemon;
@@ -101,6 +109,15 @@ const Counter = () => {
             </button>
           </div>
         ))}
+      {lastCapturedSprite && (
+        <div className={style.lastCaptured}>
+          <img
+            src={lastCapturedSprite}
+            alt="Dernier Pokémon capturé"
+            className={style.lastCapturedSprite}
+          />
+        </div>
+      )}
     </div>
   );
 };

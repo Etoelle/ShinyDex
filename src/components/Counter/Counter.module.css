@@ -69,3 +69,19 @@
   background-color: var(--blue);
   color: var(--white);
 }
+
+.lastCaptured {
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.lastCapturedSprite {
+  width: 100px;
+  height: auto;
+  background-color: var(--blue);
+  border-radius: 1em;
+  padding: 1px;
+}
